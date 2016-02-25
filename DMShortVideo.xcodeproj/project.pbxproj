@@ -15,6 +15,8 @@
 		E874AD271C7EF5DD00401146 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E874AD251C7EF5DD00401146 /* LaunchScreen.storyboard */; };
 		E874AD321C7EF5DD00401146 /* DMShortVideoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E874AD311C7EF5DD00401146 /* DMShortVideoTests.m */; };
 		E874AD3D1C7EF5DD00401146 /* DMShortVideoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E874AD3C1C7EF5DD00401146 /* DMShortVideoUITests.m */; };
+		E874AD4D1C7EF94400401146 /* DMVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E874AD4C1C7EF94400401146 /* DMVideoRecorder.m */; };
+		E874AD4F1C7EF97100401146 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E874AD4E1C7EF97100401146 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		E874AD381C7EF5DD00401146 /* DMShortVideoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DMShortVideoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E874AD3C1C7EF5DD00401146 /* DMShortVideoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DMShortVideoUITests.m; sourceTree = "<group>"; };
 		E874AD3E1C7EF5DD00401146 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E874AD4B1C7EF94400401146 /* DMVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVideoRecorder.h; sourceTree = "<group>"; };
+		E874AD4C1C7EF94400401146 /* DMVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMVideoRecorder.m; sourceTree = "<group>"; };
+		E874AD4E1C7EF97100401146 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E874AD4F1C7EF97100401146 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +87,7 @@
 		E874AD0B1C7EF5DD00401146 = {
 			isa = PBXGroup;
 			children = (
+				E874AD4E1C7EF97100401146 /* AVFoundation.framework */,
 				E874AD161C7EF5DD00401146 /* DMShortVideo */,
 				E874AD301C7EF5DD00401146 /* DMShortVideoTests */,
 				E874AD3B1C7EF5DD00401146 /* DMShortVideoUITests */,
@@ -101,6 +108,7 @@
 		E874AD161C7EF5DD00401146 /* DMShortVideo */ = {
 			isa = PBXGroup;
 			children = (
+				E874AD4A1C7EF93100401146 /* DMVideoRecorder */,
 				E874AD1A1C7EF5DD00401146 /* AppDelegate.h */,
 				E874AD1B1C7EF5DD00401146 /* AppDelegate.m */,
 				E874AD1D1C7EF5DD00401146 /* ViewController.h */,
@@ -138,6 +146,15 @@
 				E874AD3E1C7EF5DD00401146 /* Info.plist */,
 			);
 			path = DMShortVideoUITests;
+			sourceTree = "<group>";
+		};
+		E874AD4A1C7EF93100401146 /* DMVideoRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				E874AD4B1C7EF94400401146 /* DMVideoRecorder.h */,
+				E874AD4C1C7EF94400401146 /* DMVideoRecorder.m */,
+			);
+			path = DMVideoRecorder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +289,7 @@
 			files = (
 				E874AD1F1C7EF5DD00401146 /* ViewController.m in Sources */,
 				E874AD1C1C7EF5DD00401146 /* AppDelegate.m in Sources */,
+				E874AD4D1C7EF94400401146 /* DMVideoRecorder.m in Sources */,
 				E874AD191C7EF5DD00401146 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
