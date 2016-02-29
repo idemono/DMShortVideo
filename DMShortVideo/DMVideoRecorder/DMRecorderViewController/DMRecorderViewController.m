@@ -12,7 +12,7 @@
 #define RECORDER_TIME 10
 #define REFRESH_TIME  0.01
 
-@interface DMRecorderViewController ()
+@interface DMRecorderViewController ()<DMVideoRecorderProtocol>
 {
     NSTimer *time;
     CGFloat progressValue;
@@ -55,6 +55,11 @@
     self.videoRecorder.preLayer.frame = _recorderView.bounds;
 }
 
+#pragma mark - Delegate
+
+- (void)recordDidFinishOutFileAtUrl:(NSURL *)outFileUrl{
+    NSLog(@"%@",outFileUrl.absoluteString);
+}
 #pragma mark - normal Actions
 
 - (void)cancelAction:(UIButton *)button{
@@ -79,8 +84,25 @@
     [self hiddenProgress];
 }
 
++ (NSURL *)getNewRecorderUrl{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *basePath = VIDEO_PATH;
+    if (![fileManager fileExistsAtPath:basePath]) {
+        [fileManager createDirectoryAtPath:basePath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    NSURL *url = [NSURL fileURLWithPath:[basePath stringByAppendingPathComponent:[DMRecorderViewController getRecorderName]]];
+    return url;
+}
+
++ (NSString *)getRecorderName{
+    NSDateFormatter* formater = [[NSDateFormatter alloc] init];
+    [formater setDateFormat:@"yyyyMMddHHmmss"];
+    NSString *name = [NSString stringWithFormat:@"%@.mov",[formater stringFromDate:[NSDate date]]];
+    return name;
+}
 //进度条
 - (void)startRecorder{
+    [self.videoRecorder startRecorderMovieFileOutUrl:[DMRecorderViewController getNewRecorderUrl]];
     progressValue = 1;
     time = [NSTimer scheduledTimerWithTimeInterval:REFRESH_TIME
                                              target:self
@@ -108,6 +130,7 @@
     _progressLeft.progress = _progressRight.progress = progress;
 }
 - (void)hiddenProgress{
+    [self.videoRecorder stopRecord];
     _progressLeft.transform = CGAffineTransformMakeRotation(M_PI);
     _progressLeft.progress = _progressRight.progress = 0;
     _progressView.hidden = YES;
@@ -147,6 +170,7 @@
         return _videoRecorder;
     }
     _videoRecorder = [[DMVideoRecorder alloc] init];
+    _videoRecorder.delegate = self;
     return _videoRecorder;
 }
 

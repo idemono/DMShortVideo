@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DMVideoAddCell">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="102"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="102"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sP-E8-wDx">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="102"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="3sP-E8-wDx" secondAttribute="trailing" id="AfQ-fy-NI2"/>
+                <constraint firstAttribute="bottom" secondItem="3sP-E8-wDx" secondAttribute="bottom" id="Va5-qG-t4O"/>
+                <constraint firstItem="3sP-E8-wDx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Yd8-3J-cMF"/>
+                <constraint firstItem="3sP-E8-wDx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gfh-mL-I3W"/>
+            </constraints>
+            <size key="customSize" width="150" height="102"/>
+            <point key="canvasLocation" x="622" y="391"/>
+        </collectionViewCell>
+    </objects>
+</document>

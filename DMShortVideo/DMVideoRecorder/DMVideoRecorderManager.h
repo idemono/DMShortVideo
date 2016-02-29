@@ -11,5 +11,9 @@
 
 #import "DMVideoRecorder.h"
 #import "DMRecorderViewController/DMRecorderViewController.h"
+#import "DMAllVideoDisplayViewController.h"
+#import "AllVideoDataModel.h"
 
+
+#define VIDEO_PATH [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingPathComponent:@"VideoCaches"]
 #endif /* DMVideoRecorderManager_h */

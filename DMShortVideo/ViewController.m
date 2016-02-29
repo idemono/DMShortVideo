@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self performSelector:@selector(recorderAction:) withObject:nil afterDelay:1.0];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,7 +26,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)recorderAction:(id)sender {
-    DMRecorderViewController *recorderViewController = [[DMRecorderViewController alloc] init];
+    DMAllVideoDisplayViewController *recorderViewController = [[DMAllVideoDisplayViewController alloc] init];
     [self presentViewController:recorderViewController animated:NO completion:NULL];
 }
 
