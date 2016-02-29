@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DMVideoRecorderManager.h"
 
 @interface ViewController ()
 
@@ -22,6 +23,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)recorderAction:(id)sender {
+    DMRecorderViewController *recorderViewController = [[DMRecorderViewController alloc] init];
+    [self presentViewController:recorderViewController animated:NO completion:NULL];
 }
 
 @end
