@@ -23,6 +23,8 @@
 		E898C1911C856CCE003824FA /* icon_sight_close_color@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E898C18E1C856CCE003824FA /* icon_sight_close_color@2x.png */; };
 		E898C1921C856CCE003824FA /* icon_sight_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E898C18F1C856CCE003824FA /* icon_sight_close@2x.png */; };
 		E898C1931C856CCE003824FA /* bottomTipsGrayClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E898C1901C856CCE003824FA /* bottomTipsGrayClose@2x.png */; };
+		E898C1951C8581A8003824FA /* bgImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E898C1941C8581A8003824FA /* bgImage@3x.png */; };
+		E898C1991C858429003824FA /* barbuttonicon_Camera_Golden@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E898C1981C858429003824FA /* barbuttonicon_Camera_Golden@2x.png */; };
 		E8DCF12C1C83EA4400B877C8 /* DMRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCF12A1C83EA4400B877C8 /* DMRecorderViewController.m */; };
 		E8DCF12D1C83EA4400B877C8 /* DMRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8DCF12B1C83EA4400B877C8 /* DMRecorderViewController.xib */; };
 		E8DCF1361C84433800B877C8 /* DMAllVideoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCF1341C84433800B877C8 /* DMAllVideoDisplayViewController.m */; };
@@ -79,6 +81,8 @@
 		E898C18E1C856CCE003824FA /* icon_sight_close_color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_sight_close_color@2x.png"; sourceTree = "<group>"; };
 		E898C18F1C856CCE003824FA /* icon_sight_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_sight_close@2x.png"; sourceTree = "<group>"; };
 		E898C1901C856CCE003824FA /* bottomTipsGrayClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomTipsGrayClose@2x.png"; sourceTree = "<group>"; };
+		E898C1941C8581A8003824FA /* bgImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgImage@3x.png"; sourceTree = "<group>"; };
+		E898C1981C858429003824FA /* barbuttonicon_Camera_Golden@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barbuttonicon_Camera_Golden@2x.png"; sourceTree = "<group>"; };
 		E8DCF1291C83EA4400B877C8 /* DMRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRecorderViewController.h; sourceTree = "<group>"; };
 		E8DCF12A1C83EA4400B877C8 /* DMRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRecorderViewController.m; sourceTree = "<group>"; };
 		E8DCF12B1C83EA4400B877C8 /* DMRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRecorderViewController.xib; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 				E874AD1D1C7EF5DD00401146 /* ViewController.h */,
 				E874AD1E1C7EF5DD00401146 /* ViewController.m */,
 				E874AD201C7EF5DD00401146 /* Main.storyboard */,
+				E898C1981C858429003824FA /* barbuttonicon_Camera_Golden@2x.png */,
+				E898C1941C8581A8003824FA /* bgImage@3x.png */,
 				E874AD231C7EF5DD00401146 /* Assets.xcassets */,
 				E874AD251C7EF5DD00401146 /* LaunchScreen.storyboard */,
 				E874AD281C7EF5DD00401146 /* Info.plist */,
@@ -387,6 +393,8 @@
 				E8DCF1421C84454B00B877C8 /* DMVideoAddCell.xib in Resources */,
 				E874AD221C7EF5DD00401146 /* Main.storyboard in Resources */,
 				E8DCF12D1C83EA4400B877C8 /* DMRecorderViewController.xib in Resources */,
+				E898C1991C858429003824FA /* barbuttonicon_Camera_Golden@2x.png in Resources */,
+				E898C1951C8581A8003824FA /* bgImage@3x.png in Resources */,
 				E898C1921C856CCE003824FA /* icon_sight_close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

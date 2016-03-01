@@ -59,6 +59,7 @@
 
 - (void)recordDidFinishOutFileAtUrl:(NSURL *)outFileUrl{
     NSLog(@"%@",outFileUrl.absoluteString);
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 #pragma mark - normal Actions
 

@@ -196,6 +196,9 @@
             NSLog(@"压缩成功啦~~");
             dispatch_async(dispatch_get_main_queue(), ^{
 
+                if ([_delegate respondsToSelector:@selector(recordDidFinishOutFileAtUrl:)]) {
+                    [_delegate recordDidFinishOutFileAtUrl:session.outputURL];
+                }
             });
             
         }

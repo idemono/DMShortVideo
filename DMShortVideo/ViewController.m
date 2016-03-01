@@ -18,7 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self performSelector:@selector(recorderAction:) withObject:nil afterDelay:0.1];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,7 +26,7 @@
 }
 - (IBAction)recorderAction:(id)sender {
     DMAllVideoDisplayViewController *recorderViewController = [[DMAllVideoDisplayViewController alloc] init];
-    [self presentViewController:recorderViewController animated:NO completion:NULL];
+    [self presentViewController:recorderViewController animated:YES completion:NULL];
 }
 
 @end
