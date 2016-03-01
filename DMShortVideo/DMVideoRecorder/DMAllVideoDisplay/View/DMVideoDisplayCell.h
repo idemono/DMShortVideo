@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "DMVideoRecorderManager.h"
+
+@protocol DMVideoDisplayCellProtocol <NSObject>
+
+- (void)deleteVideoUrl:(NSURL *)url;
+
+@end
+
 @interface DMVideoDisplayCell : UICollectionViewCell
-@property (strong, nonatomic)AllVideoDataModel *dataModel;
+
+@property (strong, nonatomic)id<DMVideoDisplayCellProtocol>delegate;
+- (void)setDataModel:(AllVideoDataModel *)dataModel isEditing:(BOOL)isEditing;
 @end

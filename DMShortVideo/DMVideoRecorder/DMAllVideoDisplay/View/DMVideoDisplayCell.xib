@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -19,13 +20,45 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RhR-Ye-lPW">
                                 <rect key="frame" x="0.0" y="0.0" width="77" height="68"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGX-sJ-UtQ" userLabel="delete view">
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91o-92-JJ0">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <connections>
+                                            <action selector="tapDeleteGesture:" destination="gTV-IL-0wX" eventType="touchUpInside" id="HkC-Ql-QB9"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomTipsGrayClose.png" translatesAutoresizingMaskIntoConstraints="NO" id="zLL-PP-cvY">
+                                        <rect key="frame" x="2" y="2" width="20" height="20"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="91o-92-JJ0" secondAttribute="bottom" id="1rC-Hh-d1U"/>
+                                    <constraint firstAttribute="trailing" secondItem="zLL-PP-cvY" secondAttribute="trailing" constant="2" id="4GR-xa-U3j"/>
+                                    <constraint firstAttribute="width" secondItem="lGX-sJ-UtQ" secondAttribute="height" multiplier="1:1" id="5zI-Uq-BWu"/>
+                                    <constraint firstItem="zLL-PP-cvY" firstAttribute="top" secondItem="lGX-sJ-UtQ" secondAttribute="top" constant="2" id="Arf-w0-z2S"/>
+                                    <constraint firstAttribute="trailing" secondItem="91o-92-JJ0" secondAttribute="trailing" id="Dpb-n0-cmf"/>
+                                    <constraint firstAttribute="height" constant="24" id="anb-D2-Wea"/>
+                                    <constraint firstAttribute="bottom" secondItem="zLL-PP-cvY" secondAttribute="bottom" constant="2" id="dTz-wu-HHY"/>
+                                    <constraint firstItem="zLL-PP-cvY" firstAttribute="leading" secondItem="lGX-sJ-UtQ" secondAttribute="leading" constant="2" id="eg3-Mo-6MS"/>
+                                    <constraint firstItem="91o-92-JJ0" firstAttribute="leading" secondItem="lGX-sJ-UtQ" secondAttribute="leading" id="fwb-ql-nUB"/>
+                                    <constraint firstItem="91o-92-JJ0" firstAttribute="top" secondItem="lGX-sJ-UtQ" secondAttribute="top" id="gsU-iB-m3v"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="RhR-Ye-lPW" secondAttribute="bottom" id="H2f-Ko-V1L"/>
+                            <constraint firstItem="lGX-sJ-UtQ" firstAttribute="width" secondItem="lGX-sJ-UtQ" secondAttribute="height" multiplier="1:1" id="LKx-wY-E2N"/>
                             <constraint firstItem="RhR-Ye-lPW" firstAttribute="leading" secondItem="MqF-Us-msG" secondAttribute="leading" id="bjc-xC-avz"/>
                             <constraint firstAttribute="trailing" secondItem="RhR-Ye-lPW" secondAttribute="trailing" id="eXz-l7-v5x"/>
                             <constraint firstItem="RhR-Ye-lPW" firstAttribute="top" secondItem="MqF-Us-msG" secondAttribute="top" id="i1F-Eb-QY2"/>
+                            <constraint firstItem="lGX-sJ-UtQ" firstAttribute="leading" secondItem="MqF-Us-msG" secondAttribute="leading" id="tCT-wv-81u"/>
+                            <constraint firstItem="lGX-sJ-UtQ" firstAttribute="top" secondItem="MqF-Us-msG" secondAttribute="top" id="yWf-eX-OWd"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -39,10 +72,18 @@
             </constraints>
             <size key="customSize" width="77" height="68"/>
             <connections>
+                <outlet property="deleteBgView" destination="lGX-sJ-UtQ" id="Guf-Qe-YvG"/>
                 <outlet property="imageBgView" destination="MqF-Us-msG" id="Ikc-V9-aAi"/>
                 <outlet property="imageView" destination="RhR-Ye-lPW" id="8FP-jg-5gP"/>
+                <outlet property="imageViewConstraintBottom" destination="H2f-Ko-V1L" id="N2a-ez-G5S"/>
+                <outlet property="imageViewConstraintLeft" destination="bjc-xC-avz" id="UH5-gM-vMW"/>
+                <outlet property="imageViewConstraintRight" destination="eXz-l7-v5x" id="rcE-cq-73V"/>
+                <outlet property="imageViewConstraintTop" destination="i1F-Eb-QY2" id="hpK-PH-x49"/>
             </connections>
             <point key="canvasLocation" x="371.5" y="352"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="bottomTipsGrayClose.png" width="20" height="20"/>
+    </resources>
 </document>

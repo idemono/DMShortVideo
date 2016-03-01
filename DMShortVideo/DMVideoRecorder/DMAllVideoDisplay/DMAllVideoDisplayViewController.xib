@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DMAllVideoDisplayViewController">
             <connections>
+                <outlet property="backButton" destination="pip-8J-dsl" id="3uK-hG-p7h"/>
+                <outlet property="editButton" destination="hdA-ta-FQk" id="dUP-bK-7PX"/>
                 <outlet property="mainCollectionView" destination="FQy-8Y-b4k" id="bXh-d8-1ky"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,11 +38,19 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdA-ta-FQk">
-                                    <rect key="frame" x="553" y="6" width="32" height="32"/>
+                                    <rect key="frame" x="535" y="6" width="50" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="50" id="zCK-nT-wiX"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <state key="normal" title="编辑">
                                         <color key="titleColor" red="0.49803921569999998" green="0.92156862750000001" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pip-8J-dsl">
+                                    <rect key="frame" x="15" y="7" width="30" height="30"/>
+                                    <state key="normal" image="icon_sight_close_color.png"/>
+                                    <state key="highlighted" image="icon_sight_close.png"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -48,6 +58,8 @@
                                 <constraint firstItem="hdA-ta-FQk" firstAttribute="centerY" secondItem="emi-Ru-7o4" secondAttribute="centerY" id="1YQ-oT-oT4"/>
                                 <constraint firstAttribute="trailing" secondItem="hdA-ta-FQk" secondAttribute="trailing" constant="15" id="76u-Fg-9uy"/>
                                 <constraint firstItem="mWu-cU-vR4" firstAttribute="centerX" secondItem="emi-Ru-7o4" secondAttribute="centerX" id="9kb-3j-ife"/>
+                                <constraint firstItem="pip-8J-dsl" firstAttribute="leading" secondItem="emi-Ru-7o4" secondAttribute="leading" constant="15" id="Sva-rm-yuM"/>
+                                <constraint firstItem="pip-8J-dsl" firstAttribute="centerY" secondItem="emi-Ru-7o4" secondAttribute="centerY" id="XSQ-zj-0tB"/>
                                 <constraint firstItem="mWu-cU-vR4" firstAttribute="centerY" secondItem="emi-Ru-7o4" secondAttribute="centerY" id="lTr-1g-Zb8"/>
                                 <constraint firstItem="hdA-ta-FQk" firstAttribute="leading" secondItem="emi-Ru-7o4" secondAttribute="leading" constant="15" id="xph-H6-W4W"/>
                             </constraints>
@@ -97,6 +109,12 @@
                 <constraint firstAttribute="trailing" secondItem="WYb-vV-HbM" secondAttribute="trailing" id="bOf-fT-8GT"/>
                 <constraint firstItem="2FD-L5-d96" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rsY-iE-PAw"/>
             </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <point key="canvasLocation" x="297" y="355"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_sight_close.png" width="30" height="30"/>
+        <image name="icon_sight_close_color.png" width="30" height="30"/>
+    </resources>
 </document>

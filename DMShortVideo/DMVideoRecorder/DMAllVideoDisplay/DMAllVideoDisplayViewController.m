@@ -11,9 +11,17 @@
 #import "DMVideoDisplayCell.h"
 
 
-@interface DMAllVideoDisplayViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+#define DMVideoDisplayCellIDEN @"DMVideoDisplayCellIDEN"
+#define DMVideoAddCellIDEN     @"DMVideoAddCellIDEN"
+
+@interface DMAllVideoDisplayViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,DMVideoDisplayCellProtocol>
+{
+    BOOL isEditing;
+}
 
 @property (weak, nonatomic) IBOutlet UICollectionView *mainCollectionView;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic)__block NSArray *dataModels;
 @end
 
@@ -30,6 +38,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [_backButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    [_editButton addTarget:self action:@selector(editAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     [self collectionInit];
     [self loadData];
 }
@@ -38,6 +51,8 @@
     [super viewWillAppear:animated];
     [self loadData];
 }
+
+#pragma mark - normal methods
 
 - (void)loadData{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -48,23 +63,46 @@
     });
 }
 
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)editAction{
+    isEditing = !isEditing;
+    if (isEditing) {
+        [_editButton setTitle:@"完成"
+                     forState:UIControlStateNormal];
+        _backButton.hidden = YES;
+    }
+    else{
+        [_editButton setTitle:@"编辑"
+                     forState:UIControlStateNormal];
+        _backButton.hidden = NO;
+    }
+    [_mainCollectionView reloadData];
+}
+
 #pragma mark - datasource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
 
+    if(isEditing){
+        return _dataModels.count;
+    }
     return _dataModels.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row < _dataModels.count) {
-        DMVideoDisplayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DMVideoDisplayCell class])
+        DMVideoDisplayCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DMVideoDisplayCellIDEN
                                                                              forIndexPath:indexPath];
         AllVideoDataModel *dataModel = [_dataModels objectAtIndex:indexPath.row];
-        cell.dataModel = dataModel;
+        cell.delegate = self;
+        [cell setDataModel:dataModel isEditing:isEditing];
         return cell;
     }
     else{
-        DMVideoAddCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([DMVideoAddCell class])
+        DMVideoAddCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:DMVideoAddCellIDEN
                                                                              forIndexPath:indexPath];
         return cell;
     }
@@ -77,6 +115,10 @@
 #pragma mark - delegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if(isEditing){
+        return;
+    }
+    
     if (indexPath.row == _dataModels.count) {
         //跳转
         DMRecorderViewController *recorderViewController = [[DMRecorderViewController alloc] init];
@@ -90,9 +132,15 @@
     }
     
 }
+- (void)deleteVideoUrl:(NSURL *)url{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtURL:url error:nil];
+    [self loadData];
+}
+
 - (void)collectionInit{
-    [_mainCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DMVideoDisplayCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([DMVideoDisplayCell class])];
-    [_mainCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DMVideoAddCell class]) bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([DMVideoAddCell class])];
+    [_mainCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DMVideoDisplayCell class]) bundle:nil] forCellWithReuseIdentifier:DMVideoDisplayCellIDEN];
+    [_mainCollectionView registerNib:[UINib nibWithNibName:NSStringFromClass([DMVideoAddCell class]) bundle:nil] forCellWithReuseIdentifier:DMVideoAddCellIDEN];
     
     _mainCollectionView.delegate = self;
     _mainCollectionView.dataSource = self;

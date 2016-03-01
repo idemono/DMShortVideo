@@ -20,6 +20,9 @@
 		E898C1831C853EA2003824FA /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = E898C1821C853EA2003824FA /* SDAVAssetExportSession.m */; };
 		E898C1851C854305003824FA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E898C1841C854305003824FA /* MediaPlayer.framework */; };
 		E898C18B1C854650003824FA /* AllVideoDisplayCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E898C18A1C854650003824FA /* AllVideoDisplayCollectionFlowLayout.m */; };
+		E898C1911C856CCE003824FA /* icon_sight_close_color@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E898C18E1C856CCE003824FA /* icon_sight_close_color@2x.png */; };
+		E898C1921C856CCE003824FA /* icon_sight_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E898C18F1C856CCE003824FA /* icon_sight_close@2x.png */; };
+		E898C1931C856CCE003824FA /* bottomTipsGrayClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E898C1901C856CCE003824FA /* bottomTipsGrayClose@2x.png */; };
 		E8DCF12C1C83EA4400B877C8 /* DMRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCF12A1C83EA4400B877C8 /* DMRecorderViewController.m */; };
 		E8DCF12D1C83EA4400B877C8 /* DMRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8DCF12B1C83EA4400B877C8 /* DMRecorderViewController.xib */; };
 		E8DCF1361C84433800B877C8 /* DMAllVideoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCF1341C84433800B877C8 /* DMAllVideoDisplayViewController.m */; };
@@ -73,6 +76,9 @@
 		E898C1841C854305003824FA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		E898C1891C854650003824FA /* AllVideoDisplayCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllVideoDisplayCollectionFlowLayout.h; sourceTree = "<group>"; };
 		E898C18A1C854650003824FA /* AllVideoDisplayCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllVideoDisplayCollectionFlowLayout.m; sourceTree = "<group>"; };
+		E898C18E1C856CCE003824FA /* icon_sight_close_color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_sight_close_color@2x.png"; sourceTree = "<group>"; };
+		E898C18F1C856CCE003824FA /* icon_sight_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_sight_close@2x.png"; sourceTree = "<group>"; };
+		E898C1901C856CCE003824FA /* bottomTipsGrayClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottomTipsGrayClose@2x.png"; sourceTree = "<group>"; };
 		E8DCF1291C83EA4400B877C8 /* DMRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRecorderViewController.h; sourceTree = "<group>"; };
 		E8DCF12A1C83EA4400B877C8 /* DMRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRecorderViewController.m; sourceTree = "<group>"; };
 		E8DCF12B1C83EA4400B877C8 /* DMRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRecorderViewController.xib; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 		E874AD4A1C7EF93100401146 /* DMVideoRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				E898C18D1C856CBE003824FA /* DMImages */,
 				E898C1801C853EA2003824FA /* SDAVAssetExportSession */,
 				E8DCF12F1C8442D100B877C8 /* DMAllVideoDisplay */,
 				E8DCF1271C83EA1C00B877C8 /* DMPlayViewController */,
@@ -203,6 +210,16 @@
 				E898C1821C853EA2003824FA /* SDAVAssetExportSession.m */,
 			);
 			path = SDAVAssetExportSession;
+			sourceTree = "<group>";
+		};
+		E898C18D1C856CBE003824FA /* DMImages */ = {
+			isa = PBXGroup;
+			children = (
+				E898C18E1C856CCE003824FA /* icon_sight_close_color@2x.png */,
+				E898C18F1C856CCE003824FA /* icon_sight_close@2x.png */,
+				E898C1901C856CCE003824FA /* bottomTipsGrayClose@2x.png */,
+			);
+			path = DMImages;
 			sourceTree = "<group>";
 		};
 		E8DCF1271C83EA1C00B877C8 /* DMPlayViewController */ = {
@@ -362,12 +379,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E874AD271C7EF5DD00401146 /* LaunchScreen.storyboard in Resources */,
+				E898C1931C856CCE003824FA /* bottomTipsGrayClose@2x.png in Resources */,
 				E8DCF1371C84433800B877C8 /* DMAllVideoDisplayViewController.xib in Resources */,
 				E874AD241C7EF5DD00401146 /* Assets.xcassets in Resources */,
 				E8DCF13D1C84453300B877C8 /* DMVideoDisplayCell.xib in Resources */,
+				E898C1911C856CCE003824FA /* icon_sight_close_color@2x.png in Resources */,
 				E8DCF1421C84454B00B877C8 /* DMVideoAddCell.xib in Resources */,
 				E874AD221C7EF5DD00401146 /* Main.storyboard in Resources */,
 				E8DCF12D1C83EA4400B877C8 /* DMRecorderViewController.xib in Resources */,
+				E898C1921C856CCE003824FA /* icon_sight_close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
