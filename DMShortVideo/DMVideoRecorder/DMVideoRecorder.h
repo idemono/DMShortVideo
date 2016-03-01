@@ -23,4 +23,5 @@
 
 - (void)startRecorderMovieFileOutUrl:(NSURL *)url;
 - (void)stopRecord;
+- (void)cancelRecorderMovie;
 @end

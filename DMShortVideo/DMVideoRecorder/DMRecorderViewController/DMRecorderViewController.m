@@ -68,6 +68,7 @@
 #pragma mark - normal Actions
 
 - (void)cancelAction:(UIButton *)button{
+    [self.videoRecorder cancelRecorderMovie];
     [self dismissViewControllerAnimated:NO completion:NULL];
 }
 

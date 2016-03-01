@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DMShortVideo/DMVideoRecorder/DMVideoRecorder.m"
-            timestampString = "478513377.815072"
+            timestampString = "478514010.35507"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "-compressVideoUrl:"
             landmarkType = "5">
          </BreakpointContent>

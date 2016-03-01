@@ -84,6 +84,17 @@
     [self.movieFileOutput stopRecording];
 }
 
+- (void)cancelRecorderMovie{
+    if(self.movieFileOutput.recording){
+        [self.movieFileOutput stopRecording];
+    }
+
+    //删除文件
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtURL:self.movieFileOutput.outputFileURL error:nil];
+
+}
+
 #pragma mark - AVCaptureFileOutputRecordingDelegate
 - (void)captureOutput:(AVCaptureFileOutput *)captureOutput didStartRecordingToOutputFileAtURL:(NSURL *)fileURL fromConnections:(NSArray *)connections{
     NSLog(@"开始录制");
@@ -213,6 +224,10 @@
                 if ([_delegate respondsToSelector:@selector(recordDidFinishOutFileAtUrl:)]) {
                     [_delegate recordDidFinishOutFileAtUrl:session.outputURL];
                 }
+                //删除文件
+                NSFileManager *fileManager = [NSFileManager defaultManager];
+                [fileManager removeItemAtURL:url error:nil];
+
             });
             
         }
