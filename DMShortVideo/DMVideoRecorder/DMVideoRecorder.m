@@ -8,6 +8,7 @@
 
 #import "DMVideoRecorder.h"
 #import "SDAVAssetExportSession.h"
+#define MIN_TIME 3
 @interface DMVideoRecorder ()<AVCaptureFileOutputRecordingDelegate>
 
 @property (nonatomic, strong) AVCaptureDeviceInput *videoDeviceInput;
@@ -97,6 +98,19 @@
 
 - (void)compressVideoUrl:(NSURL *)url{
     AVAsset *asset = [AVAsset assetWithURL:url];
+    
+    if (asset.duration.value / asset.duration.timescale < MIN_TIME){
+        if ([_delegate respondsToSelector:@selector(recordDidTimeShort)]) {
+            [_delegate recordDidTimeShort];
+        }
+
+        //删除文件
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        [fileManager removeItemAtURL:url error:nil];
+        
+        return;
+    }
+    
     AVAssetTrack *assetTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
     
     CGFloat minValue = MIN(assetTrack.naturalSize.width, assetTrack.naturalSize.height);

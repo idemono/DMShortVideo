@@ -11,6 +11,7 @@
 
 @protocol DMVideoRecorderProtocol <NSObject>
 - (void)recordDidFinishOutFileAtUrl:(NSURL *)outFileUrl;
+- (void)recordDidTimeShort;
 
 @end
 

@@ -61,6 +61,10 @@
     NSLog(@"%@",outFileUrl.absoluteString);
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+- (void)recordDidTimeShort{
+    NSLog(@"录制时间太短");
+}
 #pragma mark - normal Actions
 
 - (void)cancelAction:(UIButton *)button{
