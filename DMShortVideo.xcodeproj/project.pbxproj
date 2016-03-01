@@ -17,6 +17,9 @@
 		E874AD3D1C7EF5DD00401146 /* DMShortVideoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E874AD3C1C7EF5DD00401146 /* DMShortVideoUITests.m */; };
 		E874AD4D1C7EF94400401146 /* DMVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = E874AD4C1C7EF94400401146 /* DMVideoRecorder.m */; };
 		E874AD4F1C7EF97100401146 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E874AD4E1C7EF97100401146 /* AVFoundation.framework */; };
+		E898C1831C853EA2003824FA /* SDAVAssetExportSession.m in Sources */ = {isa = PBXBuildFile; fileRef = E898C1821C853EA2003824FA /* SDAVAssetExportSession.m */; };
+		E898C1851C854305003824FA /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E898C1841C854305003824FA /* MediaPlayer.framework */; };
+		E898C18B1C854650003824FA /* AllVideoDisplayCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E898C18A1C854650003824FA /* AllVideoDisplayCollectionFlowLayout.m */; };
 		E8DCF12C1C83EA4400B877C8 /* DMRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCF12A1C83EA4400B877C8 /* DMRecorderViewController.m */; };
 		E8DCF12D1C83EA4400B877C8 /* DMRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8DCF12B1C83EA4400B877C8 /* DMRecorderViewController.xib */; };
 		E8DCF1361C84433800B877C8 /* DMAllVideoDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DCF1341C84433800B877C8 /* DMAllVideoDisplayViewController.m */; };
@@ -65,6 +68,11 @@
 		E874AD4B1C7EF94400401146 /* DMVideoRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMVideoRecorder.h; sourceTree = "<group>"; };
 		E874AD4C1C7EF94400401146 /* DMVideoRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMVideoRecorder.m; sourceTree = "<group>"; };
 		E874AD4E1C7EF97100401146 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E898C1811C853EA2003824FA /* SDAVAssetExportSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAVAssetExportSession.h; sourceTree = "<group>"; };
+		E898C1821C853EA2003824FA /* SDAVAssetExportSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAVAssetExportSession.m; sourceTree = "<group>"; };
+		E898C1841C854305003824FA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		E898C1891C854650003824FA /* AllVideoDisplayCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllVideoDisplayCollectionFlowLayout.h; sourceTree = "<group>"; };
+		E898C18A1C854650003824FA /* AllVideoDisplayCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllVideoDisplayCollectionFlowLayout.m; sourceTree = "<group>"; };
 		E8DCF1291C83EA4400B877C8 /* DMRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMRecorderViewController.h; sourceTree = "<group>"; };
 		E8DCF12A1C83EA4400B877C8 /* DMRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMRecorderViewController.m; sourceTree = "<group>"; };
 		E8DCF12B1C83EA4400B877C8 /* DMRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DMRecorderViewController.xib; sourceTree = "<group>"; };
@@ -87,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E898C1851C854305003824FA /* MediaPlayer.framework in Frameworks */,
 				E874AD4F1C7EF97100401146 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,6 +120,7 @@
 		E874AD0B1C7EF5DD00401146 = {
 			isa = PBXGroup;
 			children = (
+				E898C1841C854305003824FA /* MediaPlayer.framework */,
 				E874AD4E1C7EF97100401146 /* AVFoundation.framework */,
 				E874AD161C7EF5DD00401146 /* DMShortVideo */,
 				E874AD301C7EF5DD00401146 /* DMShortVideoTests */,
@@ -175,6 +185,7 @@
 		E874AD4A1C7EF93100401146 /* DMVideoRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				E898C1801C853EA2003824FA /* SDAVAssetExportSession */,
 				E8DCF12F1C8442D100B877C8 /* DMAllVideoDisplay */,
 				E8DCF1271C83EA1C00B877C8 /* DMPlayViewController */,
 				E8DCF1281C83EA1C00B877C8 /* DMRecorderViewController */,
@@ -183,6 +194,15 @@
 				E8DCF12E1C83EB2100B877C8 /* DMVideoRecorderManager.h */,
 			);
 			path = DMVideoRecorder;
+			sourceTree = "<group>";
+		};
+		E898C1801C853EA2003824FA /* SDAVAssetExportSession */ = {
+			isa = PBXGroup;
+			children = (
+				E898C1811C853EA2003824FA /* SDAVAssetExportSession.h */,
+				E898C1821C853EA2003824FA /* SDAVAssetExportSession.m */,
+			);
+			path = SDAVAssetExportSession;
 			sourceTree = "<group>";
 		};
 		E8DCF1271C83EA1C00B877C8 /* DMPlayViewController */ = {
@@ -217,6 +237,8 @@
 		E8DCF1381C84450700B877C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E898C1891C854650003824FA /* AllVideoDisplayCollectionFlowLayout.h */,
+				E898C18A1C854650003824FA /* AllVideoDisplayCollectionFlowLayout.m */,
 				E8DCF1391C84453300B877C8 /* DMVideoDisplayCell.h */,
 				E8DCF13A1C84453300B877C8 /* DMVideoDisplayCell.m */,
 				E8DCF13B1C84453300B877C8 /* DMVideoDisplayCell.xib */,
@@ -375,8 +397,10 @@
 				E874AD1C1C7EF5DD00401146 /* AppDelegate.m in Sources */,
 				E874AD4D1C7EF94400401146 /* DMVideoRecorder.m in Sources */,
 				E8DCF1411C84454B00B877C8 /* DMVideoAddCell.m in Sources */,
+				E898C1831C853EA2003824FA /* SDAVAssetExportSession.m in Sources */,
 				E874AD191C7EF5DD00401146 /* main.m in Sources */,
 				E8DCF13C1C84453300B877C8 /* DMVideoDisplayCell.m in Sources */,
+				E898C18B1C854650003824FA /* AllVideoDisplayCollectionFlowLayout.m in Sources */,
 				E8DCF12C1C83EA4400B877C8 /* DMRecorderViewController.m in Sources */,
 				E8DCF1471C84483600B877C8 /* AllVideoDataModel.m in Sources */,
 			);

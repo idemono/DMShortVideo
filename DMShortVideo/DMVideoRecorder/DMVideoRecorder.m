@@ -7,7 +7,7 @@
 //
 
 #import "DMVideoRecorder.h"
-
+#import "SDAVAssetExportSession.h"
 @interface DMVideoRecorder ()<AVCaptureFileOutputRecordingDelegate>
 
 @property (nonatomic, strong) AVCaptureDeviceInput *videoDeviceInput;
@@ -99,10 +99,9 @@
     AVAsset *asset = [AVAsset assetWithURL:url];
     AVAssetTrack *assetTrack = [[asset tracksWithMediaType:AVMediaTypeVideo] firstObject];
     
-    CGSize renderSize = CGSizeMake(assetTrack.naturalSize.width,assetTrack.naturalSize.width * 3 / 4  );
-    if (assetTrack.naturalSize.width * 3 / 4 > assetTrack.naturalSize.height) {
-        renderSize = CGSizeMake(assetTrack.naturalSize.height * 4 / 3, assetTrack.naturalSize.height);
-    }
+    CGFloat minValue = MIN(assetTrack.naturalSize.width, assetTrack.naturalSize.height);
+    
+    CGSize renderSize = CGSizeMake(minValue,minValue * 3 / 4  );
 
     
     AVMutableComposition *mixComposition = [[AVMutableComposition alloc] init];
@@ -119,21 +118,16 @@
                         ofTrack:assetTrack
                          atTime:kCMTimeZero
                           error:&videoError];
+    
         
     AVMutableVideoCompositionLayerInstruction *layerInst = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
     
-    CGFloat rate = 0.75;
+    CGFloat rate = 1.0;
     
-    CGAffineTransform layerTransform = CGAffineTransformMake(assetTrack.preferredTransform.a, assetTrack.preferredTransform.b, assetTrack.preferredTransform.c, assetTrack.preferredTransform.d, assetTrack.preferredTransform.tx * rate, assetTrack.preferredTransform.ty * rate);
+    CGAffineTransform layerTransform = CGAffineTransformMake(assetTrack.preferredTransform.a, assetTrack.preferredTransform.b, assetTrack.preferredTransform.c, assetTrack.preferredTransform.d, assetTrack.preferredTransform.tx * rate, assetTrack.preferredTransform.ty );
     layerTransform = CGAffineTransformConcat(layerTransform, CGAffineTransformMake(1, 0, 0, 1, 0, -(assetTrack.naturalSize.width - assetTrack.naturalSize.height) / 2.0));//向上移动取中部影响
     layerTransform = CGAffineTransformScale(layerTransform, rate, rate);//放缩，解决前后摄像结果大小不对称
-    
-    if (assetTrack.naturalSize.width * 3 / 4 > assetTrack.naturalSize.height) {
 
-        layerTransform = CGAffineTransformMake(assetTrack.preferredTransform.a, assetTrack.preferredTransform.b, assetTrack.preferredTransform.c, assetTrack.preferredTransform.d, assetTrack.preferredTransform.tx * rate, assetTrack.preferredTransform.ty * rate);
-        layerTransform = CGAffineTransformConcat(layerTransform, CGAffineTransformMake(1, 0, 0, 1, (assetTrack.naturalSize.width - assetTrack.naturalSize.height) / 2.0, 0));//向上移动取中部影响
-        layerTransform = CGAffineTransformScale(layerTransform, rate, rate);//放缩，解决前后摄像结果大小不对称
-    }
 
     
     [layerInst setTransform:layerTransform atTime:kCMTimeZero];
@@ -149,27 +143,65 @@
     videoComposition.renderSize = renderSize;
     videoComposition.frameDuration = CMTimeMake(1, 30);
     
-    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetLowQuality];
-    exportSession.videoComposition = videoComposition;
-    exportSession.outputFileType = AVFileTypeMPEG4;
-    NSURL *outFileUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",[url.relativePath stringByReplacingOccurrencesOfString:@"mov" withString:@"mp4"]]];
-    exportSession.outputURL = outFileUrl;
-    [exportSession exportAsynchronouslyWithCompletionHandler:^{
-       
-        if (exportSession.status == AVAssetExportSessionStatusCompleted) {
-            NSLog(@"压缩成功啦~~");
-            NSFileManager *fileManager = [NSFileManager defaultManager];
-            [fileManager removeItemAtURL:url error:nil];
-            
-            if ([_delegate respondsToSelector:@selector(recordDidFinishOutFileAtUrl:)]) {
-                [_delegate recordDidFinishOutFileAtUrl:exportSession.outputURL];
-            }
 
+    //系统的
+//    AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetHighestQuality];
+//    exportSession.videoComposition = videoComposition;
+//    exportSession.outputFileType = AVFileTypeMPEG4;
+//    NSURL *outFileUrl = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",[url.relativePath stringByReplacingOccurrencesOfString:@"mov" withString:@"mp4"]]];
+//    exportSession.outputURL = outFileUrl;
+//    [exportSession exportAsynchronouslyWithCompletionHandler:^{
+//       
+//        if (exportSession.status == AVAssetExportSessionStatusCompleted) {
+//            NSLog(@"压缩成功啦~~");
+//            NSFileManager *fileManager = [NSFileManager defaultManager];
+//            [fileManager removeItemAtURL:url error:nil];
+//            
+//            if ([_delegate respondsToSelector:@selector(recordDidFinishOutFileAtUrl:)]) {
+//                [_delegate recordDidFinishOutFileAtUrl:exportSession.outputURL];
+//            }
+//
+//        }
+//        else{
+//            NSLog(@"压缩失败 %@",exportSession.error);
+//        }
+//        
+//    }];
+    //第三方的
+    SDAVAssetExportSession *session = [SDAVAssetExportSession exportSessionWithAsset:mixComposition];
+    session.videoComposition = videoComposition;
+    session.outputFileType = AVFileTypeMPEG4;
+    session.outputURL = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@",[url.relativePath stringByReplacingOccurrencesOfString:@"mov" withString:@"mp4"]]];;
+    //    session.delegate = self;
+    session.videoSettings = @{
+                              AVVideoCodecKey:AVVideoCodecH264,
+                              AVVideoWidthKey:@1000,//[NSNumber numberWithInteger:CGRectGetWidth(_bgView.frame)],
+                              AVVideoHeightKey:@750,//[NSNumber numberWithInteger:CGRectGetHeight(_bgView.frame)],
+                              AVVideoCompressionPropertiesKey:@{
+                                      AVVideoAverageBitRateKey:@1000000,
+                                      AVVideoProfileLevelKey:AVVideoProfileLevelH264High41
+                                      }
+                              };
+    
+    session.audioSettings = @{
+                              AVFormatIDKey:@(kAudioFormatMPEG4AAC),
+                              AVNumberOfChannelsKey:@2,
+                              AVSampleRateKey:@16000,
+                              AVEncoderBitRateKey:@64000,
+                              };
+    
+    [session exportAsynchronouslyWithCompletionHandler:^{
+        
+        if (AVAssetExportSessionStatusCompleted == session.status) {
+            NSLog(@"压缩成功啦~~");
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+            });
+            
         }
         else{
-            NSLog(@"压缩失败 %@",exportSession.error);
+            NSLog(@"压缩失败 %@",session.error);
         }
-        
     }];
 }
 #pragma mark - init attribute

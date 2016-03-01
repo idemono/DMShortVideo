@@ -71,7 +71,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(100, 75);
+    return CGSizeMake(__WINDOW_WIDTH / 3.0 - 5, (__WINDOW_WIDTH / 3.0 - 3) * 3/4.0);
 }
 
 #pragma mark - delegate
@@ -81,6 +81,12 @@
         //跳转
         DMRecorderViewController *recorderViewController = [[DMRecorderViewController alloc] init];
         [self presentViewController:recorderViewController animated:NO completion:NULL];
+    }
+    else{
+        AllVideoDataModel *dataModel = [_dataModels objectAtIndex:indexPath.row];
+        MPMoviePlayerViewController* playerView = [[MPMoviePlayerViewController alloc] initWithContentURL:dataModel.fileUrl];
+        [self presentViewController:playerView animated:YES completion:NULL];
+
     }
     
 }

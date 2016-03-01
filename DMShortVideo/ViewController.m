@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self performSelector:@selector(recorderAction:) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(recorderAction:) withObject:nil afterDelay:0.1];
 }
 
 - (void)didReceiveMemoryWarning {

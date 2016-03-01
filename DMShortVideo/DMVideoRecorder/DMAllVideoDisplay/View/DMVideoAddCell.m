@@ -8,10 +8,18 @@
 
 #import "DMVideoAddCell.h"
 
+@interface DMVideoAddCell ()
+@property (weak, nonatomic) IBOutlet UIView *bgView;
+@property (weak, nonatomic) IBOutlet UILabel *addLabel;
+
+@end
+
 @implementation DMVideoAddCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    _bgView.layer.cornerRadius = 5.0;
+    _bgView.layer.masksToBounds = YES;
+    
 }
 
 @end
